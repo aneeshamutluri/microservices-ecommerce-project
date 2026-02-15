@@ -1,0 +1,19 @@
+# Dependency folders (The biggest reason for the 'hanging' upload)
+node_modules/
+**/node_modules/
+
+# Environment variables (Security best practice)
+.env
+auth-service/.env
+product-service/.env
+api-gateway/.env
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Build files and logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/git rm -r --cached

@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: Product Service API
+  version: 1.0.0
+servers:
+  - url: http://localhost:5002
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
+paths:
+  /:
+    get:
+      summary: Get all products
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create a product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: {type: string}
+                description: {type: string}
+                price: {type: number}
+      responses:
+        '201':
+          description: Created
+  /{id}:
+    get:
+      summary: Get product by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200':
+          description: OK
+    put:
+      summary: Update a product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: {type: string}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: {type: string}
+                price: {type: number}
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete a product (Admin Only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: {type: string}
+      responses:
+        '200':
+          description: Deleted
