@@ -12,8 +12,8 @@ app.use(express.json());
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://mongodb:27017/ecommerce_products')
-  .then(() => console.log('✅ Product Service DB Connected'))
-  .catch(err => console.error('❌ Product DB Error:', err));
+  .then(() => console.log(' Product Service DB Connected'))
+  .catch(err => console.error(' Product DB Error:', err));
 
 const swaggerPath = path.join(__dirname, '..', 'swagger.yaml');
 const swaggerDocument = yaml.load(swaggerPath);
@@ -25,4 +25,4 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/', productRoutes);
 
 const PORT = 5002;
-app.listen(PORT, () => console.log(`🚀 Product Service running on ${PORT}`));
+app.listen(PORT, () => console.log(` Product Service running on ${PORT}`));
